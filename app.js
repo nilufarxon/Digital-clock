@@ -1,27 +1,28 @@
-//Qo'wimcha
-const hourEl = document.getElementById("hour");
-const minuteEl = document.getElementById("minutes");
-const secondEl = document.getElementById("seconds");
-const ampmEl = document.getElementById("ampm");
-
-function updateClock() {
-  let h = new Date().getHours();
-  let m = new Date().getMinutes();
-  let s = new Date().getSeconds();
-  let ampm = "AM";
-  if (h > 12) {
-    h = h - 12;
-    ampm = "PM";
-  }
-  h = h < 10 ? "0" + h : h;
-  m = m < 10 ? "0" + m : m;
-  s = s < 10 ? "0" + s : s;
-  hourEl.innerHTML = h;
-  minuteEl.innerHTML = m;
-  secondEl.innerHTML = s;
-  ampmEl, (innerText = ampm);
-  setTimeout(() => {
-    updateClock();
-  }, 1000);
+const num1 = Math.ceil(Math.random() * 10);
+const num2 = Math.ceil(Math.random() * 10);
+const questionEl = document.getElementById("question");
+const inputEl = document.getElementById("input");
+const formEl = document.getElementById("form");
+const scoreEl = document.getElementById("score");
+let score = JSON.parse(localStorage.getItem("score"));
+if (!score) {
+  score = 0;
 }
-updateClock();
+scoreEl.innerText = `ball: ${score}`;
+questionEl.innerText = `Shu ${num2} sonini ${num1} ko'paytirsak nechi?`;
+const correctAns = num1 * num2;
+formEl.addEventListener("submit", () => {
+  const userAns = +inputEl.value;
+  console.log(userAns, typeof userAns);
+  if (userAns === correctAns) {
+    score++;
+    updateLocalStorage();
+  } else {
+    score--;
+    updateLocalStorage();
+  }
+  9;
+});
+function updateLocalStorage() {
+  localStorage.setItem("score", JSON.stringify(score));
+}
