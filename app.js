@@ -9,7 +9,7 @@ if (!score) {
   score = 0;
 }
 scoreEl.innerText = `ball: ${score}`;
-questionEl.innerText = `Shu ${num2} sonini ${num1} ko'paytirsak nechi?`;
+questionEl.innerText = `${num2} ni ${num1} ga ko'paytirsak nechi?`;
 const correctAns = num1 * num2;
 formEl.addEventListener("submit", () => {
   const userAns = +inputEl.value;
